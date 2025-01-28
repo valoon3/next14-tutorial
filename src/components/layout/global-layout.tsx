@@ -5,7 +5,7 @@ import style from "./global-layout.module.css";
 export default function GlobalLayout({ children }: { children: React.ReactNode }) {
     return (<div className={ style.container }>
         <header className={style.header}>
-            <Link href={"/"}>Home</Link>
+            <Link href={"/public"}>Home</Link>
         </header>
         <main className={style.main}>
             {children}
