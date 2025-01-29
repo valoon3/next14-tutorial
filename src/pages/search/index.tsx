@@ -1,4 +1,6 @@
 import {useRouter} from "next/router";
+import books from "@/mock/books.json";
+import BookItem from "@/components/book/book-item";
 
 export default function Page() {
     const router = useRouter();
@@ -8,8 +10,10 @@ export default function Page() {
     console.log(router);
 
     return (
-        <>
-            <h1>Search {q}</h1>
-        </>
+        <div>
+            {books.map((book) => (
+                <BookItem key={book.id} {...book}/>
+            ))}
+        </div>
     );
 }
