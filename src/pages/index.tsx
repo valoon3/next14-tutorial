@@ -4,20 +4,31 @@ import BookItem from "@/components/book/book-item";
 import {ReactNode} from "react";
 import SearchableLayout from "@/components/layout/searchable-layout/searchable-layout";
 import {InferGetServerSidePropsType} from "next";
+import fetchBooks from "@/lib/fetch-books";
 
-export const getServerSideProps = () => {
+export const getServerSideProps = async () => {
     // 컴포넌트보다 먼저 실행되어 컴포넌트에 필요한 데이터를 불러오는 함수
     const data = "hello";
 
+    // fetchBooks 함수를 이용해 서버로부터 데이터를 불러옴
+    // const allBooks = await fetchBooks();
+
+    // 여러개의 fetch 를 사용해야 하는 경우
+    // const [allBooks, recoBooks] = await Promise.all([
+    //     fetchBooks(),
+    //     fetchRandomBooks(),
+    // ]);
+
     return {
         props: {
-            data
+            data,
+            // allBooks, // 서버로부터 받은 데이터를 props data 로 전달
         }
     }
 }
 
 export default function Home({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-
+    // console.log(allBooks);
     console.log(data);
 
   return (
