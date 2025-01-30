@@ -6,6 +6,11 @@ import SearchableLayout from "@/components/layout/searchable-layout/searchable-l
 import {InferGetServerSidePropsType} from "next";
 import fetchBooks from "@/lib/fetch-books";
 
+// export const getStaticProps = async () => {
+//     // 여기의 console.log 는 build 단계에서 단 한번만 실행된다
+//     console.log("getStaticProps");
+// }
+
 export const getServerSideProps = async () => {
     // 컴포넌트보다 먼저 실행되어 컴포넌트에 필요한 데이터를 불러오는 함수
     const data = "hello";
@@ -27,6 +32,7 @@ export const getServerSideProps = async () => {
     }
 }
 
+// 만약 getStaticProps 방식으로 데이터를 불러오는 경우 InferGetStaticPropsType<typeof getStaticProps> 를 사용
 export default function Home({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     // console.log(allBooks);
     console.log(data);
