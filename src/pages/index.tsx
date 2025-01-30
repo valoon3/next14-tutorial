@@ -5,6 +5,7 @@ import {ReactNode} from "react";
 import SearchableLayout from "@/components/layout/searchable-layout/searchable-layout";
 import {InferGetServerSidePropsType} from "next";
 import fetchBooks from "@/lib/fetch-books";
+import Head from "next/head";
 
 // export const getStaticProps = async () => {
 //     // 여기의 console.log 는 build 단계에서 단 한번만 실행된다
@@ -38,6 +39,12 @@ export default function Home({ data }: InferGetServerSidePropsType<typeof getSer
     console.log(data);
 
   return (
+      <>
+      <Head>
+          <title>한입북스</title>
+          {/*<meta property="og:title" content="/thumnail.png"/>*/}
+          {/*content"/thumnail.png" 는 public 경로 아래의 file name 을 찾는다*/}
+      </Head>
     <div className={style.container}>
         <section>
             <h3>지금 추천하는 도서</h3>
@@ -52,6 +59,7 @@ export default function Home({ data }: InferGetServerSidePropsType<typeof getSer
             )}
         </section>
     </div>
+      </>
   );
 }
 
